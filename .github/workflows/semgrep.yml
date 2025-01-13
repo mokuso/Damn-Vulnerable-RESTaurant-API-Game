@@ -39,7 +39,7 @@ jobs:
       # Scan code using project's configuration on https://semgrep.dev/manage
       #- run: docker login -u ${{ secrets.SLS_CLIENT_ID }} -p ${{ secrets.SLS_CLIENT_SECRET }} tauruseer.azurecr.io
       - run: docker pull semgrep/semgrep:latest
-      - run: $ docker run --rm -v "${PWD}:/src" semgrep/semgrep semgrep scan ./ --config auto --output=semgrep.sarif --sarif 
+      - run: docker run --rm -v ${{ github.workspace }}:/src semgrep/semgrep semgrep scan ./ --config auto --output=semgrep.sarif --sarif 
 
       # Upload SARIF file generated in previous step
       - name: Upload SARIF file
