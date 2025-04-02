@@ -37,7 +37,6 @@ jobs:
       - uses: actions/checkout@v4
 
       # Scan code using project's configuration on https://semgrep.dev/manage
-      #- run: docker login -u ${{ secrets.SLS_CLIENT_ID }} -p ${{ secrets.SLS_CLIENT_SECRET }} tauruseer.azurecr.io
       - run: docker pull semgrep/semgrep:latest
       - run: docker run --rm -v ${{ github.workspace }}:/src semgrep/semgrep semgrep scan ./ --config auto --output=semgrep.sarif --sarif 
 
